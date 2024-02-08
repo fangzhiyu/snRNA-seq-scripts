@@ -1,7 +1,5 @@
-
-
 # Load defined functions
-source("defined_functions.R")
+source("/home/zhanglab02/scripts/snRNA-seq-scripts/defined_functions.R")
 
 # Read input parameters from a TXT file
 read_input_params <- function(txt_file) {
@@ -13,9 +11,12 @@ read_input_params <- function(txt_file) {
   return(params)
 }
 
-# Main function to perform QC
 perform_qc <- function(dir_paths, output_dir) {
-  projects <- basename(dir_paths)
+  projects <- sapply(dir_paths, function(x) {
+    project <- sub(".*/([^/]+)_count.*", "\\1", x)
+    return(project)
+  })
+  
   for (j in seq_along(dir_paths)) {
     output_path <-
       file.path(output_dir, paste0(projects[j], ".output.log"))
@@ -28,8 +29,8 @@ perform_qc <- function(dir_paths, output_dir) {
 
 # Read input parameters from command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-input_file <- args[1]
-output_dir <- args[2]
+input_file <- "/home/zhanglab02/0_raw/input.txt"
+output_dir <- "/home/zhanglab02/2_filterred"
 
 # Set working directory to control output location
 setwd(output_dir)

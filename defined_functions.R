@@ -1,3 +1,4 @@
+.libPaths(c('/home/zhanglab02/R/x86_64-pc-linux-gnu-library/4.2', .libPaths()))
 library(Seurat)
 library(dplyr)
 library(ggplot2)
@@ -133,14 +134,16 @@ plot_sizes = list(
 )
 
 cellranger_qc = function(dir_path,project,output_dir="D:/fzy/10x_DMH/0_qc/"){
-  if (!file.exists(output_dir)) {
-    dir.create(output_dir, recursive = TRUE)
+  if (!file.exists(paste(output_dir,project,sep = "/"))) {
+    	print("create directory")
+	dir.create(paste(output_dir,project,sep = "/"), recursive = TRUE)
   }
   system(paste("tree -L 2", output_dir))
-  print(paste(output_dir,project,sep = ""))
-  setwd(paste(output_dir,project,sep = ""))
+  print(paste(output_dir,project,sep = "/"))
+  setwd(paste(output_dir,project,sep = "/"))
   start_time_cellranger_qc = Sys.time()
   #initialize the Seurat object with the raw (non-normalized data)
+  print("read in file")
   seurat.object <- CreateSeuratObject(counts = Read10X(dir_path),
                                       min.cells = 3, min.features =  200,
                                       project = project)
@@ -152,6 +155,7 @@ cellranger_qc = function(dir_path,project,output_dir="D:/fzy/10x_DMH/0_qc/"){
     PercentageFeatureSet(object = ., pattern = "Fos", col.name = "percent.cFos")
 
   feats = c('nFeature_RNA','nCount_RNA','percent.mt','percent.ribo','percent.hb','percent.plat','percent.cFos')
+  print("creating Plots")
   seurat.object.plots = create.Plots()
   seurat.object.plots = add.Plots(plots=seurat.object.plots,
                                   plot={VlnPlot(seurat.object, group.by = "orig.ident", features = feats, pt.size = 0.1, ncol = 3) +NoLegend()},
@@ -159,7 +163,7 @@ cellranger_qc = function(dir_path,project,output_dir="D:/fzy/10x_DMH/0_qc/"){
   seurat.object.plots =  add.Plots(plots=seurat.object.plots,
                                   plot=FeatureScatter(seurat.object, "nCount_RNA", "nFeature_RNA", group.by = "orig.ident", pt.size = 0.5),
                                   file_path = "FeatureScatter")
-
+  print("Normalizing...")
   seurat.object = seurat.object %>% subset(.,subset = nFeature_RNA > 500 & percent.mt < 5 & percent.hb <1) %>%
     `[`(.,!grepl("Malat1", rownames(.)),) %>%
     NormalizeData(., normalization.method = 'LogNormalize', scale.factor = 10000,verbose=F) %>%
@@ -170,11 +174,14 @@ cellranger_qc = function(dir_path,project,output_dir="D:/fzy/10x_DMH/0_qc/"){
     FindClusters(.,resolution = 0.6,verbose=F) # granularity, larger datasets with larger values
 
   #Step2: 确定参数，寻找最优pK值
+  print("Find doublet....")
+  print("find optimal pK")
   sweep.res.list <- paramSweep(seurat.object, PCs = 1:10, sct = FALSE)
   sweep.stats <- summarizeSweep(sweep.res.list, GT = FALSE)
   bcmvn <- find.pK(sweep.stats)
   mpK <- as.numeric(as.vector(bcmvn$pK[which.max(bcmvn$BCmetric)]))
   ## (3) Homotypic Doublet Proportion Estimate -------------------------------------
+  print("homotypic doublet proportion")
   annotations <- seurat.object$seurat_clusters
   homotypic.prop <- modelHomotypic(annotations)
   (DoubletRate = ncol(seurat.object)*8*1e-6) #按每增加1000个细胞，双细胞比率增加千分之8来计算
