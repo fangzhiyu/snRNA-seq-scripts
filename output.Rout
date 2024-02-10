@@ -1,0 +1,444 @@
+/home/zhanglab02/2_filterred
+├── DMH-IPSI
+│   └── Rplots.pdf
+└── DMH-IPSI.output.log
+
+1 directory, 2 files
+/home/zhanglab02/2_filterred
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+└── O62-DMH-SHAM-2.output.log
+
+2 directories, 15 files
+/home/zhanglab02/2_filterred
+├── DMH-CONTRA
+├── DMH-CONTRA.output.log
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O62-DMH-SHAM-2.240208.rds
+│   └── O62-DMH-SHAM-2_DEGs.txt
+└── O62-DMH-SHAM-2.output.log
+
+3 directories, 28 files
+/home/zhanglab02/2_filterred
+├── DMH-CONTRA
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-CONTRA.240208.rds
+│   └── DMH-CONTRA_DEGs.txt
+├── DMH-CONTRA.output.log
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O62-DMH-SHAM-2.240208.rds
+│   └── O62-DMH-SHAM-2_DEGs.txt
+├── O62-DMH-SHAM-2.output.log
+├── Sham
+└── Sham.output.log
+
+4 directories, 41 files
+/home/zhanglab02/2_filterred
+├── DMH-CONTRA
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-CONTRA.240208.rds
+│   └── DMH-CONTRA_DEGs.txt
+├── DMH-CONTRA.output.log
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O62-DMH-SHAM-2.240208.rds
+│   └── O62-DMH-SHAM-2_DEGs.txt
+├── O62-DMH-SHAM-2.output.log
+├── O87-DMH-SNI-2
+├── O87-DMH-SNI-2.output.log
+├── Sham
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── Sham.240208.rds
+│   └── Sham_DEGs.txt
+└── Sham.output.log
+
+5 directories, 54 files
+/home/zhanglab02/2_filterred
+├── DMH-CONTRA
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-CONTRA.240208.rds
+│   └── DMH-CONTRA_DEGs.txt
+├── DMH-CONTRA.output.log
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O62-DMH-SHAM-2.240208.rds
+│   └── O62-DMH-SHAM-2_DEGs.txt
+├── O62-DMH-SHAM-2.output.log
+├── O86-DMH-SNI-1
+├── O86-DMH-SNI-1.output.log
+├── O87-DMH-SNI-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O87-DMH-SNI-2.240208.rds
+│   └── O87-DMH-SNI-2_DEGs.txt
+├── O87-DMH-SNI-2.output.log
+├── Sham
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── Sham.240208.rds
+│   └── Sham_DEGs.txt
+└── Sham.output.log
+
+6 directories, 67 files
+/home/zhanglab02/2_filterred
+├── DMH-CONTRA
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-CONTRA.240208.rds
+│   └── DMH-CONTRA_DEGs.txt
+├── DMH-CONTRA.output.log
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O62-DMH-SHAM-2.240208.rds
+│   └── O62-DMH-SHAM-2_DEGs.txt
+├── O62-DMH-SHAM-2.output.log
+├── O86-DMH-SNI-1
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O86-DMH-SNI-1.240208.rds
+│   └── O86-DMH-SNI-1_DEGs.txt
+├── O86-DMH-SNI-1.output.log
+├── O87-DMH-SNI-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O87-DMH-SNI-2.240208.rds
+│   └── O87-DMH-SNI-2_DEGs.txt
+├── O87-DMH-SNI-2.output.log
+├── Sham
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── Sham.240208.rds
+│   └── Sham_DEGs.txt
+├── Sham.output.log
+├── SNI
+└── SNI.output.log
+
+7 directories, 80 files
+/home/zhanglab02/2_filterred
+├── DMH-CONTRA
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-CONTRA.240208.rds
+│   └── DMH-CONTRA_DEGs.txt
+├── DMH-CONTRA.output.log
+├── DMH-IPSI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── DMH-IPSI.240208.rds
+│   ├── DMH-IPSI_DEGs.txt
+│   └── Rplots.pdf
+├── DMH-IPSI.output.log
+├── O62-DMH-SHAM-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O62-DMH-SHAM-2.240208.rds
+│   └── O62-DMH-SHAM-2_DEGs.txt
+├── O62-DMH-SHAM-2.output.log
+├── O86-DMH-SNI-1
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O86-DMH-SNI-1.240208.rds
+│   └── O86-DMH-SNI-1_DEGs.txt
+├── O86-DMH-SNI-1.output.log
+├── O87-DMH-SNI-2
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── O87-DMH-SNI-2.240208.rds
+│   └── O87-DMH-SNI-2_DEGs.txt
+├── O87-DMH-SNI-2.output.log
+├── O88-DMH-SHAM-1
+├── O88-DMH-SHAM-1.output.log
+├── Sham
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── Sham.240208.rds
+│   └── Sham_DEGs.txt
+├── Sham.output.log
+├── SNI
+│   ├── 01_VlnPlot_240208.pdf
+│   ├── 02_FeatureScatter_240208.pdf
+│   ├── 03_DimplotDoublet_240208.pdf
+│   ├── 04_Dimplot_240208.pdf
+│   ├── 05_Heatmap_raw_240208.pdf
+│   ├── 06_Heatmap_scaled_240208.pdf
+│   ├── 07_Dotplot_240208.pdf
+│   ├── 08_VlnPlot_annotated_240208.pdf
+│   ├── 09_Dotplot_240208.pdf
+│   ├── 10_Dimplot_annotated_240208.pdf
+│   ├── SNI.240208.rds
+│   └── SNI_DEGs.txt
+└── SNI.output.log
+
+8 directories, 93 files
+Time difference of 3.840927 hours
+            used   (Mb) gc trigger   (Mb)   max used    (Mb)
+Ncells   3699759  197.6    6383249  341.0    6383249   341.0
+Vcells 184630393 1408.7 1005368231 7670.4 4582381175 34960.8
