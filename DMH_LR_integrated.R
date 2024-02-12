@@ -1,0 +1,185 @@
+# Set up environment
+path <- "/home/zhanglab02/2_filterred_newest"
+library(Seurat)
+library(dplyr)
+library(ggplot2)
+library(cowplot)
+library(stringr)
+
+# Function definition
+increment <- function(x) {
+  assign('plot_cnt', get('plot_cnt', envir = globalenv()) + 1, envir = globalenv())
+  return(get('plot_cnt', envir = globalenv()))
+}
+
+# Load data
+rds_files <- list.files(path, pattern = "\\.rds$", full.names = TRUE)
+seurat.objects <- list()
+for (file in rds_files) {
+  object_name <- tools::file_path_sans_ext(basename(file))
+  seurat_object <- readRDS(file)
+  seurat.objects[[object_name]] <- seurat_object
+}
+
+# Merge data
+DMH_all <- Reduce(function(x, y) merge(x, y), seurat.objects)
+plan("sequential")
+plan("multisession", workers = 20)  #别多核了 
+DMH_all <- DMH_all %>% qc %>%
+  IntegrateLayers(., method = RPCAIntegration, orig.reduction = "pca", new.reduction = "integrated.rpca") %>%
+  {.[["RNA"]] = JoinLayers(.[["RNA"]]);.} %>%
+  FindNeighbors(., reduction = "integrated.rpca", dims = 1:30) %>%
+  FindClusters(., resolution = 1, cluster.name = "rpca_clusters") %>%
+  RunUMAP(., dims = 1:30, reduction = "integrated.rpca", reduction.name = "umap.rpca")
+
+saveRDS(DMH_all, str_interp('DMH_merge.all.raw.${format(Sys.Date(), format="%y%m%d")}.rds'))
+
+# Clustering
+DMH_all.markers <- FindAllMarkers(DMH_all, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25, test.use = 'roc')
+
+# Visualization
+unique(DMH_all@meta.data$orig.ident)
+
+DMH_all.markers %>% 
+  group_by(cluster) %>%
+  top_n(n = 10,wt = avg_log2FC) ->top10
+
+write.table(top10,file='./DMH.integrated.markers.txt',sep = '\t',quote = F)
+
+
+#######################################################################################################
+p2 <- DimPlot(pt.size = 0.3,object = DMH_all, reduction = "umap.rpca",split.by = "orig.ident",
+              label = F, group.by = "seurat_clusters", repel = F,ncol = 2,shuffle = T)
+
+pdf(str_interp(sprintf('%02d_DMH_add.UMAP.split.pdf',plot_cnt)),height = 15, width=10)
+p2 + coord_fixed() + ggtitle('DMH all')
+dev.off();plot_cnt=plot_cnt+1
+
+#######################################################################################################
+p2 <- DimPlot(pt.size = 0.3, object = DMH_all, reduction = "umap.rpca",
+              label = T, group.by = "seurat_clusters", repel = F,shuffle = T)
+p2 + coord_fixed() + ggtitle('DMH integrated clustered')
+
+#######################################################################################################
+p1 <- DimPlot(object = DMH_all, reduction = "umap.rpca", group.by = "orig.ident",shuffle = T) +
+  coord_fixed() +
+  ggtitle('DMH Left versus Right')
+pdf(str_interp(sprintf('%02d_DMH_integrated_Sham_SNI.pdf',plot_cnt)),height = 10, width=10)
+p1
+dev.off();plot_cnt = plot_cnt + 1
+
+#######################################################################################################
+p2 <- DimPlot(object = DMH_all, reduction = "umap.rpca", label = TRUE, 
+              repel = TRUE,group.by = "orig.ident")
+p2 <- p2 + coord_fixed()
+p2
+pdf(file = str_interp(sprintf("%02d_UMAP_DMH.pdf",plot_cnt)),height = 16,width = 20)
+plot_grid(p1, p2)
+dev.off();plot_cnt = plot_cnt+1
+#######################################################################################################
+DefaultAssay(object = DMH_all) <- "RNA"
+pdf(str_interp(sprintf('%02d_DMH_merge_dotplot.pdf',plot_cnt)),height=8,width = 6)
+
+gene_use = c("Gpc5","Snap25","Slc17a6","Gad1","Gad2","Hdc","Mobp","Dnah12","Col23a1","Inpp5d","Pdgfra","Dlc1","Adgrl4","St18")
+
+
+DotPlot(DMH_all,features = gene_use) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust =0.5)) +
+  ggtitle("DMH all integrated dotplot")
+dev.off();plot_cnt=plot_cnt+1
+#######################################################################################################
+features.to.integrate = c("Gpc5","Snap25","Slc17a6","Gad1","Gad2","Mobp","Dnah12","Col23a1","Inpp5d","Pdgfra","Dlc1","Adgrl4")
+pdf(str_interp('${sprintf("%02d",plot_cnt)}_DMH_all.heatmap.${format(Sys.Date(),format="%y%m%d")}.unscaled.pdf'),
+    height=0.2*length(features.to.integrate),width=14)
+p1 = DoHeatmap(DMH_all,features = features.to.integrate,slot = 'data')+ 
+  scale_fill_gradient2('legend name', low = 'white', high = 'red') + 
+  NoLegend()
+p1
+dev.off();plot_cnt=plot_cnt+1
+
+#######################################################################################################
+gene_use=unique(union(features.to.integrate,top10$gene))
+DMH_all = ScaleData(DMH_all, features = gene_use)
+p1 <- DoHeatmap(object = DMH_all, features = gene_use, slot = "scale.data") 
+p1 <- p1 + scale_fill_gradient2('legend name', low = 'yellow', high = 'red', mid = 'white') 
+pdf(file=str_interp('${sprintf("%02d", plot_cnt)}_DMH_integrated_Heatmap_scaled.pdf'),width = 30, height = 100)
+p1
+dev.off();plot_cnt=plot_cnt+1
+
+# Annotation
+data_p_use = DotPlot(DMH_all,features = gene_use)$data
+cluster_annotations <- annotate_clusters(data_p_use)
+print(cluster_annotations)
+saveRDS(DMH_all,stringr::str_interp('DMH_all_before_assignment.${format(Sys.Date(),format="%y%m%d")}.rds'))
+
+
+# Rename the ident
+# first assignment
+# Assuming your cluster_annotations data frame has two columns: cluster and annotation
+# Convert the cluster IDs to character in case they are factors or integers
+cluster_annotations$cluster <- as.character(cluster_annotations$cluster)
+# Create a named vector where names are the cluster IDs and the values are the annotations
+identities_vector <- setNames(cluster_annotations$annotation, cluster_annotations$cluster)
+# Now use this vector with RenameIdents to update the Seurat object
+# DMH_all = readRDS("DMH_all_before_assignment.231128.rds")
+DMH_all <- RenameIdents(DMH_all, identities_vector)
+DMH_all$seurat_clusters = DMH_all@active.ident
+head(DMH_all@meta.data)
+
+DMH_all.filtered = DMH_all[,!DMH_all$seurat_clusters%in%c("Debris","Doublet")]
+tryCatch(
+  {(nrow(DMH_all.filtered[,DMH_all.filtered$seurat_clusters%in%c("Debris","Doublet","Unclassified")])>0)},error=function(e){
+    print(paste("Error:",e$message))
+  },warning = function(w){
+    print(paste("Warning:",w$message))
+  },finally={
+    print("Checked")
+    gc() # Always clean up resources (like file connections, memory allocations, etc.) in your error handling code, especially in the finally block of tryCatch().
+  }
+)
+tmp = DMH_all.filtered@meta.data
+saveRDS(DMH_all.filtered,stringr::str_interp('DMH_LR.${format(Sys.Date(),format="%y%m%d")}.rds'))
+
+# Visualization and plots...
+pdf(str_interp('${sprintf("%02d", plot_cnt)}_VlnPlot_DMH.pdf'),width=5,height=5)
+VlnPlot(object = DMH_all.filtered, pt.size=0,features = c("nFeature_RNA", "nCount_RNA","percent.mt"),group.by = "seurat_clusters", ncol = 3)+xlab(NULL)
+dev.off();plot_cnt=plot_cnt+1
+ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}VlnPlot_DMH.png'),width = 15,height = 5,dpi=300);plot_cnt=plot_cnt+1
+ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}VlnPlot_DMH.noDOts.png'),width = 15,height = 5,dpi=300);plot_cnt=plot_cnt+1
+
+
+pdf(file = str_interp('${sprintf("%02d", plot_cnt)}_UMAP_DMH_sort.pdf'),width = 5,height = 5)
+g = DimPlot(object = DMH_all.filtered, reduction = "umap.rpca", label = F, 
+            repel = F,shuffle=T,pt.size=1.5) + coord_fixed() + NoLegend()+  xlab(NULL) + ylab(NULL)
+g
+dev.off();plot_cnt=plot_cnt+1
+ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}_UMAP_DMH_sort.png'),width = 10,height = 10,dpi=300);plot_cnt=plot_cnt+1
+
+
+FeaturePlot(DMH_all.filtered,
+            features= c("Gpc5","Snap25","Mobp","Dnah12","Col23a1","Inpp5d","Pdgfra","Dlc1","Adgrl4"),
+            ncol = 4,pt.size=1.5,cols=c("lightgrey", "#ff0000")
+) +  xlab(NULL) + ylab(NULL)
+ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}_Featureplot.png'),width = 30,height = 30,dpi=300);plot_cnt=plot_cnt+1
+
+pdf(file = str_interp('${sprintf("%02d", plot_cnt)}_UMAP_DMH_sort_split.pdf'),width = 20,height = 20)
+DimPlot(object = DMH_all.filtered, reduction = "umap.rpca", label = FALSE, ncol = 2,split.by='orig.ident',
+        repel = TRUE,shuffle=T,pt.size = 2) + coord_fixed()
+dev.off();plot_cnt=plot_cnt+1
+
+
+# Save data
+path <- "/home/zhanglab02/3_integrated"
+setwd(path)
+setwd(path)
+for (current_cluster in unique(DMH_all.filtered$seurat_clusters)){
+  print(str_interp("saving ${current_cluster}"))
+  data = DMH_all[,rownames(DMH_all.filtered@meta.data[DMH_all.filtered@meta.data$seurat_clusters %in% current_cluster,])]
+  anno = DMH_all.filtered@meta.data[DMH_all.filtered@meta.data$seurat_clusters %in% current_cluster,]
+  save(data,anno,file=str_interp("${current_cluster}_data.Rdata"))
+}
+
+end_time <- Sys.time()
+print(end_time - start_time)
+gc()
+
