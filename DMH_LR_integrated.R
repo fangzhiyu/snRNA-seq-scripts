@@ -1,3 +1,5 @@
+.libPaths(c('/home/zhanglab02/R/x86_64-pc-linux-gnu-library/4.2', .libPaths()))
+source("/home/zhanglab02/scripts/snRNA-seq-scripts/defined_functions.R")
 # Set up environment
 path <- "/home/zhanglab02/2_filterred_newest"
 library(Seurat)
