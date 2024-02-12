@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-path <- "D:/fzy/10x_DMH/DMH_all/"
+path <- "/home/zhanglab02/2_filterred_newest"
 knitr::opts_chunk$set(eval=TRUE, #在块中运行代码(default = TRUE)
                       highlight = T, #高亮显示
                       echo = F, #是否在输出中包含源代码
@@ -43,22 +43,21 @@ plot_cnt = 1
 
 ```{r load, include=FALSE}
 start_time = Sys.time()
-DMH_ipsi = readRDS("D:/fzy/10x_DMH/0_qc/DMH_SNI_ipsi/DMH_SNI_ipsi.240115.rds")
-DMH_contra = readRDS('D:/fzy/10x_DMH/0_qc/DMH_SNI_contra/DMH_SNI_contra.240115.rds')
-DMH_Sham  = readRDS('D:/fzy/10x_DMH/0_qc/DMH_Sham/DMH_Sham.231207.rds')
-DMH_Sham_1 = readRDS('D:/fzy/10x_DMH/0_qc/DMH_Sham_1/DMH_Sham_1.231207.rds')
-DMH_Sham_2 = readRDS('D:/fzy/10x_DMH/0_qc/DMH_Sham_2/DMH_Sham_2.231207.rds')
-DMH_SNI = readRDS('D:/fzy/10x_DMH/0_qc/DMH_SNI/DMH_SNI.231208.rds')
-DMH_SNI_1 = readRDS('D:/fzy/10x_DMH/0_qc/DMH_SNI_1/DMH_SNI_1.231208.rds')
-DMH_SNI_2 = readRDS('D:/fzy/10x_DMH/0_qc/DMH_SNI_2/DMH_SNI_2.231208.rds') # 不加入刺激的整合
-seurat.objects = ls(pattern="^DMH_")
+rds_files = list.files(path,pattern = "\\.rds$",full.names=TRUE)
+seurat.objects = list()
+for (file in rds_files){
+	object_name = tools::file_path_san_ext(basename(file))
+	seurat_object = readRDS(file)
+	seurat.objects[[object_name]] = seurat_object
+}
+cat("seurat.objects:",paste(names(seurat.objects),collapse=","),"\n")
+
 ```
 
 ```{r merge}
 DMH_all = Reduce(function(x,y) merge(x,y), lapply(seurat.objects,function(name) get(name)))
-rm(list=grep("^DMH_(?!all).*",ls(),value=T,perl=T))
-# plan("sequential")
-# plan("multisession",workers=7)#别多核了 
+plan("sequential")
+plan("multisession",workers=20)#别多核了 
 # RPCA for faster integration, by default no SCTransform
 DMH_all = DMH_all %>% `qc`%>%
   IntegrateLayers(.,method=RPCAIntegration,orig.reduction = "pca",new.reduction="integrated.rpca") %>%
@@ -213,7 +212,7 @@ dev.off();plot_cnt=plot_cnt+1
 ```
 
 ```{r save}
-path = "D:/fzy/10x_DMH/DMH_all/"
+path="/home/zhanglab02/3_integrated"
 setwd(path)
 for (current_cluster in unique(DMH_all.filtered$seurat_clusters)){
   print(str_interp("saving ${current_cluster}"))

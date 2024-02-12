@@ -1,3 +1,4 @@
+# -- coding: utf-8 -
 import os
 import time
 
@@ -125,11 +126,11 @@ def print_tree(node, indent='', last=True):
 
 if __name__ == "__main__":
     # 设置根文件夹路径
-    root_directory = "/Users/zhiyufang/Downloads/10x_DMH"
+    root_directory = "/home/zhanglab02/2_filterred"
     # 遍历根文件夹
     traverse_directory(root_directory)
     # 示例：从文件中读取目录信息并构建树状结构
-    file_path = '/Users/zhiyufang/filesys/file_info.txt'
+    file_path = '/home/zhanglab02/scripts/snRNA-seq-scripts/file_info.txt'
     root = build_tree_from_file(file_path)
     print_tree(root)
     #自动搜索所有的rds文件，并且将最新的rds文件保存到一个新的文件夹里
