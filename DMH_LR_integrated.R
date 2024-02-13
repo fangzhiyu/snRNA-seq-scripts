@@ -13,7 +13,8 @@ increment <- function(x) {
   assign('plot_cnt', get('plot_cnt', envir = globalenv()) + 1, envir = globalenv())
   return(get('plot_cnt', envir = globalenv()))
 }
-
+plot_cnt = 1
+start_time = Sys.time()
 # Load data
 rds_files <- list.files(path, pattern = "\\.rds$", full.names = TRUE)
 seurat.objects <- list()
@@ -25,8 +26,6 @@ for (file in rds_files) {
 
 # Merge data
 DMH_all <- Reduce(function(x, y) merge(x, y), seurat.objects)
-plan("sequential")
-plan("multisession", workers = 20)  #别多核了 
 DMH_all <- DMH_all %>% qc %>%
   IntegrateLayers(., method = RPCAIntegration, orig.reduction = "pca", new.reduction = "integrated.rpca") %>%
   {.[["RNA"]] = JoinLayers(.[["RNA"]]);.} %>%

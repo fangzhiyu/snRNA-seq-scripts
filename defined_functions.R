@@ -57,10 +57,10 @@ check_gene = function(membrane.data){
 }
 
 
-plan("multisession",workers=20) # 72 cores, 29mins, for seurat.object_1 # 16 cores, 20mins?
+#plan("multisession",workers=20) # 72 cores, 29mins, for seurat.object_1 # 16 cores, 20mins?
 # availableCores()
 # nbrOfWorkers()
-options(future.globals.maxSize = 1 * 1024^4) # 1T
+#options(future.globals.maxSize = 1 * 1024^4) # 1T
 # use S3 to manage plots, for simplicity, flexibility
 ## constructor
 create.Plots = function(){
