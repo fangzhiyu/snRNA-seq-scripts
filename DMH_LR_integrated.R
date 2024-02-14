@@ -145,8 +145,8 @@ saveRDS(DMH_all.filtered,stringr::str_interp('DMH_LR.${format(Sys.Date(),format=
 pdf(str_interp('${sprintf("%02d", plot_cnt)}_VlnPlot_DMH.pdf'),width=5,height=5)
 VlnPlot(object = DMH_all.filtered, pt.size=0,features = c("nFeature_RNA", "nCount_RNA","percent.mt"),group.by = "seurat_clusters", ncol = 3)+xlab(NULL)
 dev.off();plot_cnt=plot_cnt+1
-ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}VlnPlot_DMH.png'),width = 15,height = 5,dpi=300);plot_cnt=plot_cnt+1
-ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}VlnPlot_DMH.noDOts.png'),width = 15,height = 5,dpi=300);plot_cnt=plot_cnt+1
+ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}_VlnPlot_DMH.png'),width = 15,height = 5,dpi=300);plot_cnt=plot_cnt+1
+ggsave(filename = str_interp('${sprintf("%02d", plot_cnt)}_VlnPlot_DMH.noDOts.png'),width = 15,height = 5,dpi=300);plot_cnt=plot_cnt+1
 
 
 pdf(file = str_interp('${sprintf("%02d", plot_cnt)}_UMAP_DMH_sort.pdf'),width = 5,height = 5)
